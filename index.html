@@ -3,245 +3,88 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Project KiWI Resource Hub</title>
+    <title>KiWI Resource Hub</title>
     <!-- Load Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Load Inter Font -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <!-- Load Poppins Font for a clean, modern look -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
     <style>
-        /* Apply Inter font globally and ensure smooth scrolling */
+        /* Apply Poppins to the entire body */
         body {
-            font-family: 'Inter', sans-serif;
-            @apply bg-gray-900 text-gray-200;
-        }
-
-        /* Custom scrollbar for a sleek look */
-        .custom-scroll::-webkit-scrollbar {
-            width: 6px;
-        }
-        .custom-scroll::-webkit-scrollbar-thumb {
-            background-color: #059669; /* Emerald 600 */
-            border-radius: 3px;
-        }
-        .custom-scroll::-webkit-scrollbar-track {
-            background: #1f2937; /* Gray 800 */
-        }
-
-        /* Transition utility for smoother UI changes */
-        .transition-all-200 {
-            transition: all 200ms ease-in-out;
-        }
-
-        /* Ensures the KiWI logo text has a bright, distinct color */
-        .kiwi-logo-text {
-            background: linear-gradient(90deg, #10b981 0%, #34d399 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            font-family: 'Poppins', sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
     </style>
 </head>
-<body class="min-h-screen flex flex-col">
+<body class="bg-white min-h-screen flex flex-col items-center justify-between p-4 md:p-8">
 
-    <!-- Main Application Container -->
-    <div id="app-container" class="flex flex-1 overflow-hidden">
+    <!-- Main Content Area -->
+    <div class="flex flex-col items-center w-full max-w-2xl mt-12 mb-12">
 
-        <!-- 1. Sidebar (Navigation) -->
-        <aside id="sidebar" class="fixed inset-y-0 left-0 transform -translate-x-full md:translate-x-0 transition-all-200
-                                   md:relative md:w-64 w-60 bg-gray-800 z-50 shadow-2xl md:shadow-none
-                                   flex flex-col border-r border-gray-700">
-            <!-- KiWI Logo and Title -->
-            <div class="p-6 flex items-center justify-between">
-                <div class="flex items-center space-x-2">
-                    <!-- Placeholder Logo Icon (KiWI inspired, using SVG) -->
-                    <svg class="w-8 h-8 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9h-3M8 9l3 3 3-3"></path>
-                    </svg>
-                    <h1 class="text-2xl font-extrabold kiwi-logo-text">KiWI Hub</h1>
-                </div>
-                <!-- Close Button for Mobile -->
-                <button id="close-sidebar-btn" class="md:hidden text-gray-400 hover:text-white focus:outline-none">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
-                </button>
-            </div>
+        <!-- Header -->
+        <header class="text-center mb-10">
+            <h1 class="text-5xl md:text-6xl font-extrabold text-gray-800 tracking-tight mb-2">
+                KiWI Resource Hub
+            </h1>
+            <p class="text-xl md:text-2xl text-gray-500 font-light">
+                Click the buttons to access project files.
+            </p>
+        </header>
 
-            <!-- Navigation Links -->
-            <nav class="flex-1 px-4 py-6 space-y-2 custom-scroll overflow-y-auto">
-                <!-- Helper function to generate navigation links -->
-                <script>
-                    function navItem(icon, text, isActive = false) {
-                        const activeClass = isActive ? 'bg-emerald-600 shadow-lg' : 'hover:bg-gray-700';
-                        const activeIcon = isActive ? 'text-white' : 'text-emerald-400';
-                        return `
-                            <a href="#" class="flex items-center p-3 rounded-xl ${activeClass} transition-all-200">
-                                <svg class="w-5 h-5 mr-3 ${activeIcon}" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">${icon}</svg>
-                                <span class="font-medium text-sm ${isActive ? 'text-white' : 'text-gray-300'}">${text}</span>
-                            </a>
-                        `;
-                    }
-                </script>
-                
-                <a href="#" class="flex items-center p-3 rounded-xl bg-emerald-600 shadow-lg transition-all-200">
-                    <svg class="w-5 h-5 mr-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
-                    <span class="font-medium text-sm text-white">Home</span>
-                </a>
-                <a href="#" class="flex items-center p-3 rounded-xl hover:bg-gray-700 transition-all-200">
-                    <svg class="w-5 h-5 mr-3 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
-                    <span class="font-medium text-sm text-gray-300">Documents</span>
-                </a>
-                <a href="#" class="flex items-center p-3 rounded-xl hover:bg-gray-700 transition-all-200">
-                    <svg class="w-5 h-5 mr-3 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 3.055A9.001 9.001 0 1020.945 13H11V3.055z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.488 9H15V3.512A9.025 9.025 0 0120.488 9z"></path></svg>
-                    <span class="font-medium text-sm text-gray-300">Reports</span>
-                </a>
-                <a href="#" class="flex items-center p-3 rounded-xl hover:bg-gray-700 transition-all-200">
-                    <svg class="w-5 h-5 mr-3 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
-                    <span class="font-medium text-sm text-gray-300">Designs</span>
-                </a>
-                <a href="#" class="flex items-center p-3 rounded-xl hover:bg-gray-700 transition-all-200">
-                    <svg class="w-5 h-5 mr-3 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"></path></svg>
-                    <span class="font-medium text-sm text-gray-300">Settings</span>
-                </a>
-            </nav>
-        </aside>
+        <!-- Buttons Grid/Stack -->
+        <main class="w-full space-y-4">
+            <!-- Note: Replace the 'href' values below with your actual Google Drive share links.
+                 The 'target="_blank"' ensures they open in a new tab. -->
 
-        <!-- 2. Main Content Area -->
-        <main class="flex-1 flex flex-col overflow-y-auto custom-scroll">
+            <!-- Button 1: Project Overview (Green) -->
+            <a href="https://drive.google.com/document/d/mock-kiwi-overview-123" target="_blank"
+               class="block w-full text-center text-lg font-semibold py-4 px-6 rounded-2xl
+                      bg-green-500 text-white shadow-xl hover:bg-green-600
+                      transform hover:scale-[1.01] transition duration-300 ease-in-out">
+                Project Overview
+            </a>
 
-            <!-- 2a. Header and Search Bar -->
-            <header class="sticky top-0 bg-gray-900/95 backdrop-blur-sm p-6 border-b border-gray-700 z-40">
-                <div class="flex flex-col md:flex-row md:items-center md:justify-between">
-                    <div>
-                        <!-- Mobile Menu Button -->
-                        <button id="open-sidebar-btn" class="md:hidden p-2 text-gray-400 hover:text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500 mb-4">
-                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
-                        </button>
+            <!-- Button 2: AI Integration Plan (Blue) -->
+            <a href="https://drive.google.com/document/d/mock-kiwi-ai-plan-456" target="_blank"
+               class="block w-full text-center text-lg font-semibold py-4 px-6 rounded-2xl
+                      bg-blue-500 text-white shadow-xl hover:bg-blue-600
+                      transform hover:scale-[1.01] transition duration-300 ease-in-out">
+                AI Integration Plan
+            </a>
 
-                        <h2 class="text-3xl font-bold text-white tracking-tight">Project KiWI Resource Hub</h2>
-                        <p class="text-md text-gray-400 mt-1">Central access to all KiWI project documents.</p>
-                    </div>
+            <!-- Button 3: Prototype Design (Green) -->
+            <a href="https://drive.google.com/document/d/mock-kiwi-prototype-789" target="_blank"
+               class="block w-full text-center text-lg font-semibold py-4 px-6 rounded-2xl
+                      bg-green-500 text-white shadow-xl hover:bg-green-600
+                      transform hover:scale-[1.01] transition duration-300 ease-in-out">
+                Prototype Design
+            </a>
 
-                    <!-- Search Bar -->
-                    <div class="mt-4 md:mt-0 w-full md:w-auto">
-                        <label for="search" class="sr-only">Search Documents</label>
-                        <div class="relative">
-                            <input type="search" id="search" placeholder="Quick search..."
-                                   class="w-full md:w-64 bg-gray-800 border border-gray-700 text-gray-200
-                                          text-sm rounded-xl py-2 pl-10 pr-4 focus:ring-emerald-500 focus:border-emerald-500 transition-all-200"
-                                   >
-                            <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                                <svg class="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </header>
+            <!-- Button 4: Branding Kit (Blue) -->
+            <a href="https://drive.google.com/document/d/mock-kiwi-branding-012" target="_blank"
+               class="block w-full text-center text-lg font-semibold py-4 px-6 rounded-2xl
+                      bg-blue-500 text-white shadow-xl hover:bg-blue-600
+                      transform hover:scale-[1.01] transition duration-300 ease-in-out">
+                Branding Kit
+            </a>
 
-            <!-- 2b. Document Cards Grid -->
-            <section class="p-6 flex-1">
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-
-                    <!-- Document Card Component (reusable structure) -->
-                    <script>
-                        // Placeholder Google Drive link (change these for real links!)
-                        const driveLink = "https://www.google.com/drive/placeholder-link"; 
-                        function documentCard(title, description, iconPath) {
-                            return `
-                                <div class="bg-gray-800 border border-gray-700 rounded-2xl p-6 transition-all-200
-                                            hover:border-emerald-500 hover:shadow-2xl hover:shadow-emerald-500/10 flex flex-col">
-                                    <div class="flex items-start justify-between">
-                                        <!-- Document Icon -->
-                                        <svg class="w-8 h-8 text-emerald-400 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="${iconPath}"></path>
-                                        </svg>
-                                    </div>
-                                    
-                                    <h3 class="text-xl font-semibold text-white mb-2">${title}</h3>
-                                    <p class="text-gray-400 text-sm flex-1">${description}</p>
-                                    
-                                    <!-- Open File Button -->
-                                    <a href="${driveLink}" target="_blank"
-                                       class="mt-4 inline-flex items-center justify-center px-4 py-2 text-sm font-medium
-                                              rounded-xl bg-emerald-600 text-white shadow-md shadow-emerald-600/30
-                                              hover:bg-emerald-500 transition-all-200 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2 focus:ring-offset-gray-900">
-                                        <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
-                                        Open File
-                                    </a>
-                                </div>
-                            `;
-                        }
-                        
-                        // Array of document data
-                        const documents = [
-                            { title: "Project Overview", desc: "The core mission statement, project scope, and timeline breakdown.", icon: "M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h4a2 2 0 012 2v2M7 7h10" },
-                            { title: "AI Integration Plan", desc: "Detailed strategy for machine learning implementation in crop monitoring.", icon: "M9.75 17L9 20l-1 1h8l-1-1v-3.25m-7.25 0H16.25m-7.25 0V7.5M16.25 17V7.5M16.25 7.5l-4.25-4.25L7.75 7.5" },
-                            { title: "Krishi Paryavaran Design Files", desc: "CAD files, 3D models, and reference photos for the hardware unit.", icon: "M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37a1.724 1.724 0 002.572-1.065z" },
-                            { title: "Branding Kit", desc: "Logo variants, typography guidelines, and approved color codes (HEX/RGB).", icon: "M6 5H4v14a2 2 0 002 2h12a2 2 0 002-2V9a2 2 0 00-2-2h-3.586a1 1 0 01-.707-.293l-1.414-1.414a1 1 0 00-.707-.293H6z" },
-                            { title: "Reports & Submissions", desc: "Quarterly progress reports, funding applications, and compliance paperwork.", icon: "M15 13H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" },
-                            { title: "User Feedback Analysis (Q2)", desc: "Summary of field tests and required software iteration points.", icon: "M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.83c-.885-2.074-1.357-4.384-1.395-6.687C3 7.614 7.03 4 12 4c4.97 0 9 3.614 9 8z" },
-                            { title: "Financial Projections (2025)", desc: "Detailed 5-year budget forecast and expenditure tracking sheets.", icon: "M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8a4 4 0 100 8 4 4 0 000-8zM4 16h16a2 2 0 012 2v2a1 1 0 01-1 1H3a1 1 0 01-1-1v-2a2 2 0 012-2z" },
-                            { title: "Marketing Strategy V2.0", desc: "Target audience definition, campaign messaging, and launch schedule.", icon: "M13 10V3L4 14h7v7l9-11h-7z" },
-                        ];
-                        
-                        // Populate the grid
-                        document.addEventListener('DOMContentLoaded', () => {
-                            const grid = document.querySelector('.grid');
-                            if (grid) {
-                                documents.forEach(doc => {
-                                    grid.innerHTML += documentCard(doc.title, doc.desc, doc.icon);
-                                });
-                            }
-                        });
-                    </script>
-                    <!-- Cards will be populated here by JavaScript -->
-
-                </div>
-            </section>
+            <!-- Button 5: Reports & Submissions (Green) -->
+            <a href="https://drive.google.com/document/d/mock-kiwi-reports-345" target="_blank"
+               class="block w-full text-center text-lg font-semibold py-4 px-6 rounded-2xl
+                      bg-green-500 text-white shadow-xl hover:bg-green-600
+                      transform hover:scale-[1.01] transition duration-300 ease-in-out">
+                Reports & Submissions
+            </a>
         </main>
     </div>
 
-    <!-- 3. Footer -->
-    <footer class="w-full bg-gray-800 border-t border-gray-700 p-4 text-center">
-        <p class="text-sm text-gray-500">
-            &copy; InnoCreatre | <span class="text-emerald-400 font-medium">Project KiWI Ecosystem</span>
+    <!-- Footer -->
+    <footer class="mt-auto text-center py-4 w-full border-t border-gray-100">
+        <p class="text-sm text-gray-400 font-light">
+            &copy; InnoCreatre | Project KiWI Ecosystem
         </p>
     </footer>
 
-    <!-- JavaScript for Mobile Responsiveness (Sidebar Toggle) -->
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const sidebar = document.getElementById('sidebar');
-            const openBtn = document.getElementById('open-sidebar-btn');
-            const closeBtn = document.getElementById('close-sidebar-btn');
-            const appContainer = document.getElementById('app-container');
-
-            // Function to open sidebar (for mobile)
-            openBtn.addEventListener('click', () => {
-                sidebar.classList.remove('-translate-x-full');
-                // Optional: add an overlay for better mobile experience
-                const overlay = document.createElement('div');
-                overlay.id = 'sidebar-overlay';
-                overlay.className = 'fixed inset-0 bg-black/50 z-40 md:hidden';
-                overlay.addEventListener('click', closeSidebar);
-                appContainer.appendChild(overlay);
-            });
-
-            // Function to close sidebar (for mobile)
-            closeBtn.addEventListener('click', closeSidebar);
-
-            function closeSidebar() {
-                sidebar.classList.add('-translate-x-full');
-                const overlay = document.getElementById('sidebar-overlay');
-                if (overlay) {
-                    overlay.remove();
-                }
-            }
-
-            // Remove overlay and hide sidebar if window resizes to desktop size
-            window.addEventListener('resize', () => {
-                if (window.innerWidth >= 768) { // md: breakpoint
-                    closeSidebar();
-                }
-            });
-        });
-    </script>
 </body>
 </html>
