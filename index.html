@@ -1,19 +1,23 @@
-<!DOCTYPE html>
-<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>KiWI Resource Hub</title>
     <!-- Load Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Load Poppins Font for a clean, modern look -->
+    <!-- Load Poppins Font for body -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <!-- Load League Spartan Font -->
+    <link href="https://fonts.googleapis.com/css2?family=League+Spartan&display=swap" rel="stylesheet">
     <style>
-        /* Apply Poppins to the entire body */
         body {
             font-family: 'Poppins', sans-serif;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* Apply League Spartan specifically to the header "aether think." text */
+        .header-brand {
+            font-family: 'League Spartan', sans-serif;
         }
     </style>
 </head>
@@ -24,13 +28,17 @@
 
         <!-- Header -->
         <header class="text-center mb-10">
+            <p class="header-brand text-3xl md:text-4xl font-bold">
+                aether think.
+            </p>
             <h1 class="text-5xl md:text-6xl font-extrabold text-gray-800 tracking-tight mb-2">
-                KiWI Resource Hub
+                KiWI Resource center
             </h1>
             <p class="text-xl md:text-2xl text-gray-500 font-light">
                 Click the buttons to access project files.
             </p>
         </header>
+
 
         <!-- Buttons Grid/Stack -->
         <main class="w-full space-y-4">
